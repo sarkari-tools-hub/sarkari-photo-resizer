@@ -1,62 +1,172 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta name="google-site-verification" content="eFYr2ywS5STRWxY15b1tgyhZZPGLtKYia6jpS_r01so" />
+    <meta name="google-site-verification" content="eFYr2ywS5STRWx" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarkari Photo & Signature Resizer (Under 20KB / 50KB)</title>
+    <title>Sarkari Exam Hub: Photo Resizer, Age Calculator & PDF Converter</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f4f7f6; margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .card { background: white; padding: 24px; border-radius: 12px; max-width: 450px; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        h1 { font-size: 1.3rem; margin-top: 0; color: #1e293b; text-align: center; }
-        p { color: #64748b; font-size: 0.9rem; text-align: center; }
-        .form-group { margin-top: 15px; }
-        label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 5px; color: #334155; }
-        input, select, button { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; box-sizing: border-box; font-size: 0.9rem; }
-        button { background: #2563eb; color: white; border: none; font-weight: 600; margin-top: 20px; cursor: pointer; }
-        button:hover { background: #1d4ed8; }
-        #preview { max-width: 100%; margin-top: 15px; display: none; border-radius: 6px; border: 1px solid #ddd; }
-        .download-btn { display: none; background: #16a34a; text-align: center; text-decoration: none; padding: 10px; color: white; border-radius: 6px; font-weight: 600; margin-top: 10px; }
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #cbd5e1;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .container { max-width: 550px; width: 100%; }
+        
+        /* Navigation Tabs */
+        .tabs { display: flex; background: #e2e8f0; border-radius: 12px; padding: 4px; margin-bottom: 20px; }
+        .tab-btn { flex: 1; padding: 10px; border: none; background: transparent; font-weight: 600; font-size: 0.85rem; color: var(--text-light); cursor: pointer; border-radius: 8px; transition: all 0.2s; }
+        .tab-btn.active { background: #ffffff; color: var(--primary); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+        .card { background: var(--card-bg); padding: 24px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); box-sizing: border-box; margin-bottom: 20px; display: none; }
+        .card.active { display: block; }
+
+        h1 { font-size: 1.3rem; margin-top: 0; margin-bottom: 4px; color: var(--text); text-align: center; }
+        .subtitle { color: var(--text-light); font-size: 0.85rem; text-align: center; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: 600; font-size: 0.85rem; margin-bottom: 5px; color: var(--text); }
+        input[type="file"], input[type="date"], select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); box-sizing: border-box; font-size: 0.9rem; background: #fff; outline: none; }
+        
+        .btn { width: 100%; padding: 10px; border-radius: 8px; border: none; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; }
+        .btn-primary { background: var(--primary); color: white; margin-top: 10px; }
+        .btn-primary:hover { background: var(--primary-dark); }
+        
+        .preview-box { text-align: center; margin-top: 15px; }
+        #preview { max-width: 100%; max-height: 200px; border-radius: 6px; border: 1px solid var(--border); display: none; margin: 0 auto; }
+        .download-btn { display: none; background: var(--success); text-align: center; text-decoration: none; padding: 10px; color: white; border-radius: 8px; font-weight: 600; margin-top: 10px; }
+        .info-text { text-align: center; font-size: 0.85rem; margin-top: 8px; font-weight: 500; color: var(--primary-dark); }
+        
+        /* Result Box for Age Calculator */
+        .result-card { background: #f8fafc; border: 1px dashed var(--border); padding: 12px; border-radius: 8px; text-align: center; margin-top: 15px; font-weight: 600; color: var(--primary-dark); display: none; }
+
+        .guide-section { background: #ffffff; padding: 20px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); font-size: 0.85rem; line-height: 1.5; color: var(--text-light); }
+        .guide-section h3 { color: var(--text); margin-top: 0; font-size: 1rem; }
+        footer { text-align: center; font-size: 0.75rem; color: var(--text-light); margin-top: 20px; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <h1>Online Form Photo Resizer</h1>
-    <p>SSC, UPSC, Railway aur Bank forms ke liye photo/sign compress karein</p>
-
-    <div class="form-group">
-        <label>Photo ya Signature Upload Karein:</label>
-        <input type="file" id="imageInput" accept="image/*">
+<div class="container">
+    
+    <!-- Navigation Tabs -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('resizer', this)">📸 Photo Resizer</button>
+        <button class="tab-btn" onclick="switchTab('calculator', this)">⏳ Age Calculator</button>
+        <button class="tab-btn" onclick="switchTab('pdfTool', this)">📄 Image to PDF</button>
     </div>
 
-    <div class="form-group">
-        <label>Target File Size Chunein:</label>
-        <select id="targetSize">
-            <option value="20">Under 20 KB (Signatures ke liye)</option>
-            <option value="50" selected>Under 50 KB (Photos ke liye)</option>
-            <option value="100">Under 100 KB</option>
-        </select>
+    <!-- TOOL 1: PHOTO RESIZER -->
+    <div id="resizer" class="card active">
+        <h1>Sarkari Photo & Sign Resizer</h1>
+        <div class="subtitle">SSC, UP Police, CTET ke liye KB me compress karein</div>
+
+        <div class="form-group">
+            <label>Photo ya Signature Chunein:</label>
+            <input type="file" id="imageInput" accept="image/*">
+        </div>
+
+        <div class="form-group">
+            <label>Exam Preset Select Karein:</label>
+            <select id="presetSelect" onchange="applyPreset()">
+                <option value="ssc_photo" selected>SSC Photo (Under 50 KB)</option>
+                <option value="ssc_sign">SSC Signature (Under 20 KB)</option>
+                <option value="uppolice_photo">UP Police Photo (Under 50 KB)</option>
+                <option value="ctet_photo">CTET Photo (Under 200 KB)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Target Max Size (KB):</label>
+            <select id="targetSize">
+                <option value="20">Under 20 KB</option>
+                <option value="50" selected>Under 50 KB</option>
+                <option value="100">Under 100 KB</option>
+                <option value="200">Under 200 KB</option>
+            </select>
+        </div>
+
+        <button class="btn btn-primary" onclick="processImage()">Compress & Resize Karein</button>
+
+        <div class="preview-box">
+            <img id="preview" alt="Preview">
+            <div id="outputInfo" class="info-text"></div>
+            <a id="downloadLink" class="download-btn" download="resized-image.jpg">Download Image</a>
+        </div>
     </div>
 
-    <button onclick="processImage()">Compress & Resize Karein</button>
+    <!-- TOOL 2: AGE CALCULATOR -->
+    <div id="calculator" class="card">
+        <h1>Sarkari Exam Age Calculator</h1>
+        <div class="subtitle">Form ke liye apni exact Age pata karein</div>
 
-    <img id="preview" alt="Preview">
-    <a id="downloadLink" class="download-btn" download="resized-image.jpg">Download Image</a>
-    <div id="outputInfo" style="text-align:center; font-size:0.85rem; margin-top:8px; color:#475569;"></div>
+        <div class="form-group">
+            <label>Aapki Date of Birth (Janm Tithi):</label>
+            <input type="date" id="dob">
+        </div>
+
+        <div class="form-group">
+            <label>Age Calculate karne ki Last Date (Notification ke mutabiq):</label>
+            <input type="date" id="targetDate" value="2026-08-01">
+        </div>
+
+        <button class="btn btn-primary" onclick="calculateAge()">Age Calculate Karein</button>
+
+        <div id="ageResult" class="result-card"></div>
     </div>
 
-<div style="max-width: 600px; margin: 30px auto; font-family: sans-serif; line-height: 1.6; color: #334155; padding: 0 15px;">
-    <h2>Sarkari Form ke Liye Photo & Signature Resize Kaise Karein?</h2>
-    <ol>
-        <li><strong>Upload Karein:</strong> Apne phone ya computer se apni photo ya signature select karein.</li>
-        <li><strong>Size Chunein:</strong> SSC/UPSC ke liye photo 20KB–50KB aur signature 10KB–20KB manga jata hai.</li>
-        <li><strong>Compress & Download:</strong> Button dabayein aur compressed file download kar lein.</li>
-    </ol>
-    <p><em>Note: Yeh tool 100% safe hai kyunki aapki image server par nahi jati, seedha browser me resize hoti hai.</em></p>
+    <!-- TOOL 3: IMAGE TO PDF CONVERTER -->
+    <div id="pdfTool" class="card">
+        <h1>Image to PDF Converter</h1>
+        <div class="subtitle">Documents / Marksheet ko PDF me badlein</div>
+
+        <div class="form-group">
+            <label>Multiple Images Select Karein:</label>
+            <input type="file" id="pdfImages" accept="image/*" multiple>
+        </div>
+
+        <button class="btn btn-primary" onclick="alert('Image to PDF feature next update me active hoga! Abhi Photo Resizer aur Age Calculator use karein.')">PDF Banayein</button>
+    </div>
+
+    <!-- Guide Section -->
+    <div class="guide-section">
+        <h3>💡 Student Guide:</h3>
+        <p>Yeh sabhi tools 100% secure hain. Aapka data ya photo aapke phone/laptop ke andar hi process hoti hai, server par upload nahi hoti.</p>
+    </div>
+
+    <footer>
+        <p>© 2026 Sarkari Exam Hub. All Rights Reserved.</p>
+    </footer>
 </div>
 
 <script>
+// Tab Switching Logic
+function switchTab(tabId, btn) {
+    document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    btn.classList.add('active');
+}
+
+// Preset Logic for Resizer
+function applyPreset() {
+    const preset = document.getElementById('presetSelect').value;
+    const targetSize = document.getElementById('targetSize');
+    if (preset.includes('sign')) {
+        targetSize.value = "20";
+    } else if (preset === 'ctet_photo') {
+        targetSize.value = "200";
+    } else {
+        targetSize.value = "50";
+    }
+}
+
+// Image Resizer Logic
 function processImage() {
     const fileInput = document.getElementById('imageInput');
     const targetKB = parseInt(document.getElementById('targetSize').value);
@@ -65,9 +175,11 @@ function processImage() {
     const outputInfo = document.getElementById('outputInfo');
 
     if (!fileInput.files[0]) {
-        alert("Kripya pehle image upload karein!");
+        alert("Kripya pehle image select karein!");
         return;
     }
+
+    outputInfo.innerText = "Processing ho raha hai...";
 
     const reader = new FileReader();
     reader.readAsDataURL(fileInput.files[0]);
@@ -79,8 +191,7 @@ function processImage() {
             let width = img.width;
             let height = img.height;
             
-            // Max width clamp for quick sizing
-            const maxDimension = 600;
+            const maxDimension = 800;
             if (width > maxDimension || height > maxDimension) {
                 if (width > height) {
                     height = Math.round((height * maxDimension) / width);
@@ -99,8 +210,7 @@ function processImage() {
             let quality = 0.9;
             let dataUrl = canvas.toDataURL('image/jpeg', quality);
             
-            // Loop to fit under selected KB
-            while (dataUrl.length * (3/4) / 1024 > targetKB && quality > 0.1) {
+            while (dataUrl.length * (3/4) / 1024 > targetKB && quality > 0.05) {
                 quality -= 0.05;
                 dataUrl = canvas.toDataURL('image/jpeg', quality);
             }
@@ -110,9 +220,51 @@ function processImage() {
             preview.style.display = 'block';
             downloadLink.href = dataUrl;
             downloadLink.style.display = 'block';
-            outputInfo.innerText = `Final Size: ~${finalSizeKB} KB (Ready to upload)`;
+            outputInfo.innerText = `✨ Final Size: ~${finalSizeKB} KB (Ready)`;
         };
     };
+}
+
+// Age Calculator Logic
+function calculateAge() {
+    const dobValue = document.getElementById('dob').value;
+    const targetValue = document.getElementById('targetDate').value;
+    const resultBox = document.getElementById('ageResult');
+
+    if (!dobValue || !targetValue) {
+        alert("Kripya dono dates select karein!");
+        return;
+    }
+
+    const dob = new Date(dobValue);
+    const target = new Date(targetValue);
+
+    if (dob > target) {
+        alert("Date of Birth, Target Date se choti honi chahiye!");
+        return;
+    }
+
+    let years = target.getFullYear() - dob.getFullYear();
+    let months = target.getMonth() - dob.getMonth();
+    let days = target.getDate() - dob.getDate();
+
+    if (days < 0) {
+        months--;
+        const prevMonth = new Date(target.getFullYear(), target.getMonth(), 0);
+        days += prevMonth.getDate();
+    }
+
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+
+    resultBox.style.display = 'block';
+    resultBox.innerText = `Aapki Age: ${years} Saal, ${MonthsText(months)}, ${days} Din`;
+}
+
+function MonthsText(m) {
+    return m + " Mahine";
 }
 </script>
 </body>
