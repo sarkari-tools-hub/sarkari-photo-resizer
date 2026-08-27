@@ -61,7 +61,7 @@
     }
     header p { color: var(--text-dim); margin-top: 6px; font-size: 0.82rem; line-height: 1.4; max-width: 650px; margin-inline: auto; }
 
-    /* Responsive Pill Navigation (No Cutting on Mobile) */
+    /* Responsive Pill Navigation */
     .nav-wrapper {
       position: sticky;
       top: 0;
@@ -196,6 +196,63 @@
       font-size: 0.82rem;
     }
 
+    /* AdSense Policy Modals & Footer Links */
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      color: #a5b4fc;
+      text-decoration: none;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; text-decoration: underline; }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      backdrop-filter: blur(6px);
+    }
+    .modal-box {
+      background: #111827;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      max-width: 650px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 24px;
+      color: #cbd5e1;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .modal-box h3 { color: #a5b4fc; font-size: 1.25rem; margin-bottom: 12px; }
+    .modal-box p { margin-bottom: 10px; }
+    .modal-close-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 15px;
+      float: right;
+    }
+
     /* Print Template Container */
     @media print {
       body * { visibility: hidden; }
@@ -298,7 +355,7 @@
             <p class="desc">Print candidate full name and date on the passport photo footer to prevent form rejection.</p>
             <div class="field">
               <label>Candidate Full Name</label>
-              <input type="text" id="stampFullName" placeholder="e.g. ADITYA SHARMA">
+              <input type="text" id="stampFullName" placeholder="Enter Candidate Full Name">
             </div>
             <div class="field">
               <label>Date of Photo (DOP)</label>
@@ -393,11 +450,11 @@
             <p class="desc">Write declarations, self-attestation letters, or application text and export directly as PDF.</p>
             <div class="field">
               <label>Document Title</label>
-              <input type="text" id="docTitleInput" placeholder="e.g. Self Declaration Form">
+              <input type="text" id="docTitleInput" placeholder="Enter Document Title (e.g. Self Declaration)">
             </div>
             <div class="field">
               <label>Body Text / Content</label>
-              <textarea id="docBodyInput" rows="4" placeholder="Write or paste your declaration text here..."></textarea>
+              <textarea id="docBodyInput" rows="4" placeholder="Write or paste your document text here..."></textarea>
             </div>
           </div>
           <button class="btn" onclick="executeTextToPdf()">Export PDF Document</button>
@@ -432,15 +489,15 @@
             <p class="desc">Generates standard 4x9 inch printable Speed Post / Registered Post sender & receiver address slips for Army/Court offline forms.</p>
             <div class="field">
               <label>Application For The Post Of</label>
-              <input type="text" id="envPostName" placeholder="e.g. Application For The Post Of MTS & Category OBC">
+              <input type="text" id="envPostName" placeholder="Enter Applied Post Name & Category">
             </div>
             <div class="field">
               <label>To (Recruiting Authority Address)</label>
-              <textarea id="envToAddress" rows="2" placeholder="To, The Commanding Officer, HQ Western Command..."></textarea>
+              <textarea id="envToAddress" rows="2" placeholder="Enter Department / Office Receiving Address"></textarea>
             </div>
             <div class="field">
               <label>From (Candidate Full Address & Mobile)</label>
-              <textarea id="envFromAddress" rows="2" placeholder="From: Aditya Sharma, S/O Ramesh, Vill-..., Pin: 110001, Mob: 9876543210"></textarea>
+              <textarea id="envFromAddress" rows="2" placeholder="Enter Your Name, Father Name, Full Address, PIN & Mobile"></textarea>
             </div>
           </div>
           <button class="btn" onclick="printEnvelopeLabel()">Print Standard Envelope Label</button>
@@ -453,15 +510,15 @@
             <p class="desc">Generate a clean printable proof slip with application number, roll number, and exam credentials so details are never lost.</p>
             <div class="field">
               <label>Exam Name & Registration Number</label>
-              <input type="text" id="slipExamReg" placeholder="e.g. SSC CGL 2026 | Reg No: 30098472910">
+              <input type="text" id="slipExamReg" placeholder="Enter Exam Name & Registration No.">
             </div>
             <div class="field">
               <label>Candidate Name & Father's Name</label>
-              <input type="text" id="slipCandFather" placeholder="Name: Rahul Kumar | Father: Shri Om Prakash">
+              <input type="text" id="slipCandFather" placeholder="Enter Candidate Name & Father's Name">
             </div>
             <div class="field">
               <label>Exam Post & Category</label>
-              <input type="text" id="slipPostCat" placeholder="e.g. Inspector (Examiner) | Category: OBC">
+              <input type="text" id="slipPostCat" placeholder="Enter Applied Post & Category">
             </div>
           </div>
           <button class="btn" onclick="printAppSlipRecord()">Print Application Record Slip</button>
@@ -492,19 +549,19 @@
             <p class="desc">Build standard clean CVs without registration for offline job/interview submissions.</p>
             <div class="field">
               <label>Full Name</label>
-              <input type="text" id="cvFullName" placeholder="Your Full Name">
+              <input type="text" id="cvFullName" placeholder="Enter Full Name">
             </div>
             <div class="field">
               <label>Phone / Email</label>
-              <input type="text" id="cvContactInfo" placeholder="+91-9876543210 | candidate@mail.com">
+              <input type="text" id="cvContactInfo" placeholder="Enter Mobile Number & Email ID">
             </div>
             <div class="field">
               <label>Educational Qualifications</label>
-              <input type="text" id="cvEduDetails" placeholder="10th, 12th, Graduation Details">
+              <input type="text" id="cvEduDetails" placeholder="Enter 10th, 12th, Graduation Details">
             </div>
             <div class="field">
               <label>Key Skills / Summary</label>
-              <textarea id="cvSkillsInfo" rows="2" placeholder="Typing 35 WPM, Basic Computer, MS Office"></textarea>
+              <textarea id="cvSkillsInfo" rows="2" placeholder="Enter Typing Speed, Computer Skills, Experience"></textarea>
             </div>
           </div>
           <button class="btn" onclick="printResumeSheet()">Print / Download Resume</button>
@@ -517,15 +574,15 @@
             <p class="desc">Standard Indian bio-data sheet format ready to print and circulate.</p>
             <div class="field">
               <label>Full Name & DOB</label>
-              <input type="text" id="bioFullNameDob" placeholder="Name, Date of Birth">
+              <input type="text" id="bioFullNameDob" placeholder="Enter Full Name & Date of Birth">
             </div>
             <div class="field">
               <label>Height & Complexion</label>
-              <input type="text" id="bioHeightComplex" placeholder="e.g. 5 Ft 9 In, Fair">
+              <input type="text" id="bioHeightComplex" placeholder="Enter Height & Complexion">
             </div>
             <div class="field">
               <label>Education & Job Details</label>
-              <input type="text" id="bioOccupation" placeholder="Govt Employee / Private Sector / Business">
+              <input type="text" id="bioOccupation" placeholder="Enter Qualification & Occupation / Job">
             </div>
           </div>
           <button class="btn" onclick="printBioDataSheet()">Generate Bio-Data Sheet</button>
@@ -607,11 +664,11 @@
             <p class="desc">Calculate obtained marks percentage for exam application entry.</p>
             <div class="field">
               <label>Marks Obtained</label>
-              <input type="number" id="marksObtained" placeholder="e.g. 425">
+              <input type="number" id="marksObtained" placeholder="Enter Obtained Marks">
             </div>
             <div class="field">
               <label>Total Maximum Marks</label>
-              <input type="number" id="marksTotal" placeholder="e.g. 500">
+              <input type="number" id="marksTotal" placeholder="Enter Total Marks">
             </div>
           </div>
           <button class="btn" onclick="executePercentageCalc()">Calculate Percentage</button>
@@ -625,7 +682,7 @@
             <p class="desc">Convert CGPA to percentage using standard AICTE/CBSE 9.5 factor.</p>
             <div class="field">
               <label>Enter CGPA (10 Point Scale)</label>
-              <input type="number" step="0.01" id="gpaScoreInput" placeholder="e.g. 8.4">
+              <input type="number" step="0.01" id="gpaScoreInput" placeholder="Enter CGPA (e.g. 8.5)">
             </div>
           </div>
           <button class="btn" onclick="executeGpaCalc()">Convert to Percentage</button>
@@ -639,15 +696,15 @@
             <p class="desc">Calculate compound interest, total return, and maturity value.</p>
             <div class="field">
               <label>Principal Amount (₹)</label>
-              <input type="number" id="ciPrincInput" placeholder="e.g. 50000">
+              <input type="number" id="ciPrincInput" placeholder="Enter Principal Amount">
             </div>
             <div class="field">
               <label>Annual Interest Rate (%)</label>
-              <input type="number" step="0.1" id="ciRateInput" placeholder="e.g. 7.5">
+              <input type="number" step="0.1" id="ciRateInput" placeholder="Enter Interest Rate %">
             </div>
             <div class="field">
               <label>Tenure (Years)</label>
-              <input type="number" id="ciTimeInput" placeholder="e.g. 5">
+              <input type="number" id="ciTimeInput" placeholder="Enter Time in Years">
             </div>
           </div>
           <button class="btn" onclick="executeCiCalc()">Calculate Value</button>
@@ -661,11 +718,11 @@
             <p class="desc">Calculate Body Mass Index (BMI) for defence/police physical fitness standards.</p>
             <div class="field">
               <label>Weight (in KG)</label>
-              <input type="number" id="bmiWeight" placeholder="e.g. 68">
+              <input type="number" id="bmiWeight" placeholder="Enter Weight in KG">
             </div>
             <div class="field">
               <label>Height (in CM)</label>
-              <input type="number" id="bmiHeight" placeholder="e.g. 172">
+              <input type="number" id="bmiHeight" placeholder="Enter Height in CM">
             </div>
           </div>
           <button class="btn" onclick="executeBmiCalc()">Check Medical BMI</button>
@@ -679,11 +736,11 @@
             <p class="desc">Calculate power consumption in units (kWh) and estimated monthly load.</p>
             <div class="field">
               <label>Total Appliance Power (Watts)</label>
-              <input type="number" id="elecWatts" placeholder="e.g. 1500">
+              <input type="number" id="elecWatts" placeholder="Enter Total Watts">
             </div>
             <div class="field">
               <label>Hours Used Per Day</label>
-              <input type="number" id="elecHours" placeholder="e.g. 8">
+              <input type="number" id="elecHours" placeholder="Enter Daily Usage Hours">
             </div>
           </div>
           <button class="btn" onclick="executeElectricCalc()">Calculate Consumption</button>
@@ -719,7 +776,7 @@
             <p class="desc">Convert Pounds (lbs) to Kilograms (KG) for medical verification records.</p>
             <div class="field">
               <label>Weight in Pounds (lbs)</label>
-              <input type="number" step="0.1" id="convLbsIn" placeholder="e.g. 150">
+              <input type="number" step="0.1" id="convLbsIn" placeholder="Enter Weight in Lbs">
             </div>
           </div>
           <button class="btn" onclick="executeWeightConv()">Convert to KG</button>
@@ -802,9 +859,59 @@
 
   </div>
 
+  <!-- ADSense Legal Policy Footer -->
   <footer>
+    <div class="footer-links">
+      <a onclick="openPolicyModal('privacyModal')">Privacy Policy</a>
+      <span>•</span>
+      <a onclick="openPolicyModal('termsModal')">Terms & Conditions</a>
+      <span>•</span>
+      <a onclick="openPolicyModal('aboutModal')">About Us</a>
+      <span>•</span>
+      <a onclick="openPolicyModal('contactModal')">Contact Us</a>
+    </div>
     <p>&copy; 2026 Sarkari Photo Resizer. All Utilities 100% Free for Aspirants Across India.</p>
   </footer>
+
+  <!-- POLICY MODALS -->
+  <div id="privacyModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3>🔒 Privacy Policy</h3>
+      <p><strong>100% Client-Side Privacy:</strong> Sarkari Photo Resizer does not collect, store, or transmit your personal photos, ID proofs, signatures, or documents to any external server or third party.</p>
+      <p>All image processing, resizing, and PDF generation execute locally inside your web browser using HTML5 Canvas and JavaScript.</p>
+      <p>We do not store user cookies for tracking or sell personal identity details.</p>
+      <button class="modal-close-btn" onclick="closePolicyModal('privacyModal')">Close</button>
+    </div>
+  </div>
+
+  <div id="termsModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3>📜 Terms & Conditions</h3>
+      <p>This web tool is designed to assist government job aspirants in preparing document dimensions according to standard examination guidelines (SSC, UPSC, IBPS, Railways, Police).</p>
+      <p>Candidates are advised to cross-verify the specific file requirements with the official exam notification before final submission.</p>
+      <p>The service is provided completely free of charge without warranty of any kind.</p>
+      <button class="modal-close-btn" onclick="closePolicyModal('termsModal')">Close</button>
+    </div>
+  </div>
+
+  <div id="aboutModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3>ℹ️ About Us</h3>
+      <p>Sarkari Photo Resizer 2026 is a free utility platform dedicated to simplifying government job application procedures for students across India.</p>
+      <p>We provide instant, browser-based tools for image resizing, PDF creation, thumb impression sharpening, and typing evaluations without requiring account registration or paid subscriptions.</p>
+      <button class="modal-close-btn" onclick="closePolicyModal('aboutModal')">Close</button>
+    </div>
+  </div>
+
+  <div id="contactModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3>✉️ Contact Us</h3>
+      <p>For feedback, feature requests, or technical assistance regarding our utilities, feel free to reach out:</p>
+      <p><strong>Email Support:</strong> support@sarkari-tools.com</p>
+      <p><strong>Platform:</strong> Sarkari Tools Hub (Open Source Client Utilities)</p>
+      <button class="modal-close-btn" onclick="closePolicyModal('contactModal')">Close</button>
+    </div>
+  </div>
 
   <!-- JAVASCRIPT ENGINE -->
   <script>
@@ -814,6 +921,14 @@
       document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       document.getElementById(secId).classList.add('active');
       if (btn) btn.classList.add('active');
+    }
+
+    // AdSense Policy Modals Handler
+    function openPolicyModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+    function closePolicyModal(id) {
+      document.getElementById(id).style.display = 'none';
     }
 
     // Default Dates
@@ -1098,7 +1213,7 @@
 
     // 8. Application Slip Record Printer
     function printAppSlipRecord() {
-      const examReg = document.getElementById('slipExamReg').value || 'Sarkari Exam 2026';
+      const examReg = document.getElementById('slipExamReg').value || 'Sarkari Exam Record';
       const candFather = document.getElementById('slipCandFather').value || 'Candidate Record';
       const postCat = document.getElementById('slipPostCat').value || 'General Record';
 
