@@ -8,233 +8,229 @@
   <!-- High-Intent SEO Meta Tags -->
   <title>Sarkari Photo Resizer 2026 - SSC, UPSC, Police, Railway Photo & Sign Resize</title>
   <meta name="description" content="Free Online Sarkari Photo & Signature Resizer 2026. Crop and compress photo to 20KB, 50KB, 100KB for SSC, UPSC, IBPS, Police & Govt Job Forms online.">
-  <meta name="keywords" content="sarkari photo resizer, ssc photo resizer 50kb, signature resizer 20kb, sarkari form photo crop">
+  <meta name="keywords" content="sarkari photo resizer, ssc photo resizer 50kb, signature resizer 20kb, sarkari form photo crop, thumb impression enhancer, offline envelope generator">
   <meta name="robots" content="index, follow">
 
   <!-- Core In-Browser Document Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
- <style>
-  :root {
-    --primary: #6366f1;
-    --primary-dark: #4f46e5;
-    --accent: #ec4899;
-    --bg: #090d16;
-    --surface: #111827;
-    --card-bg: rgba(30, 41, 59, 0.75);
-    --border: rgba(255, 255, 255, 0.08);
-    --text: #f8fafc;
-    --text-dim: #94a3b8;
-    --success: #10b981;
-    --glow: rgba(99, 102, 241, 0.25);
-  }
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --accent: #ec4899;
+      --bg: #090d16;
+      --surface: #111827;
+      --card-bg: rgba(30, 41, 59, 0.75);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --text-dim: #94a3b8;
+      --success: #10b981;
+      --glow: rgba(99, 102, 241, 0.25);
+    }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
-  body { background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 70px; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+    body { background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 80px; }
 
-  /* Compact Adaptive Header */
-  header {
-    background: radial-gradient(circle at top, #1e1b4b 0%, #090d16 100%);
-    padding: 24px 14px 18px 14px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-  }
-  .badge-privacy {
-    display: inline-block;
-    background: rgba(16, 185, 129, 0.15);
-    color: #34d399;
-    border: 1px solid rgba(16, 185, 129, 0.3);
-    padding: 4px 12px;
-    border-radius: 999px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    margin-bottom: 8px;
-    letter-spacing: 0.3px;
-  }
-  header h1 {
-    font-size: 1.55rem;
-    font-weight: 900;
-    line-height: 1.25;
-    background: linear-gradient(135deg, #a5b4fc, #f472b6, #38bdf8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  header p { color: var(--text-dim); margin-top: 6px; font-size: 0.8rem; line-height: 1.4; max-width: 650px; margin-inline: auto; }
+    /* Clean Compact Header */
+    header {
+      background: radial-gradient(circle at top, #1e1b4b 0%, #090d16 100%);
+      padding: 24px 15px 18px 15px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .badge-privacy {
+      display: inline-block;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+    header h1 {
+      font-size: 1.65rem;
+      font-weight: 900;
+      line-height: 1.25;
+      background: linear-gradient(135deg, #a5b4fc, #f472b6, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    header p { color: var(--text-dim); margin-top: 6px; font-size: 0.82rem; line-height: 1.4; max-width: 650px; margin-inline: auto; }
 
-  /* Smooth Touch-Scroll Nav Bar */
-  .nav-wrapper {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: rgba(17, 24, 39, 0.96);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-    padding: 10px 12px;
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .nav-wrapper::-webkit-scrollbar { display: none; }
-  
-  .nav-btn {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    padding: 8px 13px;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: all 0.2s ease;
-  }
-  .nav-btn:hover, .nav-btn.active {
-    background: var(--primary);
-    color: #fff;
-    border-color: var(--primary);
-    box-shadow: 0 0 12px var(--glow);
-  }
+    /* Responsive Pill Navigation (No Cutting on Mobile) */
+    .nav-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(17, 24, 39, 0.98);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 12px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+    }
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+      flex: 1 1 calc(33.333% - 8px);
+      max-width: 180px;
+    }
+    .nav-btn:hover, .nav-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      box-shadow: 0 0 12px var(--glow);
+    }
 
-  /* Main Container */
-  .container { max-width: 1050px; margin: 18px auto; padding: 0 12px; }
-  .tool-group { display: none; }
-  .tool-group.active { display: block; animation: slideUp 0.25s ease-out; }
-  @keyframes slideUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    /* Container & Tool Groups */
+    .container { max-width: 1050px; margin: 20px auto; padding: 0 14px; }
+    .tool-group { display: none; }
+    .tool-group.active { display: block; animation: slideUp 0.25s ease-out; }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-  .section-title { font-size: 1.2rem; font-weight: 800; color: #a5b4fc; margin-bottom: 4px; }
-  .section-intro { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 14px; line-height: 1.4; }
+    .section-title { font-size: 1.25rem; font-weight: 800; color: #a5b4fc; margin-bottom: 4px; }
+    .section-intro { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 16px; line-height: 1.4; }
 
-  /* Auto-Fitting Quick Preset Buttons */
-  .quick-bar {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 8px;
-    margin-bottom: 18px;
-  }
-  .quick-pill {
-    background: rgba(99, 102, 241, 0.12);
-    border: 1px solid rgba(99, 102, 241, 0.35);
-    color: #c7d2fe;
-    padding: 9px 8px;
-    border-radius: 10px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .quick-pill.selected, .quick-pill:hover {
-    background: var(--primary);
-    color: #fff;
-    border-color: var(--primary);
-  }
+    /* Quick Presets Bar */
+    .quick-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 18px; }
+    .quick-pill {
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      color: #c7d2fe;
+      padding: 9px 8px;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .quick-pill.selected, .quick-pill:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
 
-  /* Flexible Grid for Cards */
-  .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  @media (min-width: 768px) {
-    .grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-    header h1 { font-size: 2.2rem; }
-    .section-title { font-size: 1.4rem; }
-  }
+    /* Cards Grid */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 768px) {
+      .grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+      header h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.4rem; }
+      .nav-btn { flex: 0 1 auto; max-width: none; }
+    }
 
-  .card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 16px;
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  .card h2 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
-  .card p.desc { font-size: 0.76rem; color: var(--text-dim); margin-bottom: 12px; line-height: 1.35; }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card h2 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .card p.desc { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 14px; line-height: 1.35; }
 
-  /* Form Elements */
-  .field { margin-bottom: 12px; }
-  label { display: block; font-size: 0.72rem; font-weight: 600; color: var(--text-dim); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.3px; }
-  input, select, textarea {
-    width: 100%;
-    background: rgba(15, 23, 42, 0.85);
-    border: 1px solid var(--border);
-    padding: 10px 12px;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 0.86rem;
-    outline: none;
-  }
-  input:focus, select:focus, textarea:focus { border-color: var(--primary); }
+    /* Form Fields */
+    .field { margin-bottom: 12px; }
+    label { display: block; font-size: 0.74rem; font-weight: 600; color: var(--text-dim); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.3px; }
+    input, select, textarea {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.88rem;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--primary); }
 
-  /* Buttons */
-  .btn {
-    width: 100%;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    color: #fff;
-    border: none;
-    padding: 12px 16px;
-    border-radius: 9px;
-    font-weight: 700;
-    font-size: 0.88rem;
-    cursor: pointer;
-    box-shadow: 0 4px 14px var(--glow);
-  }
+    /* Buttons */
+    .btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      box-shadow: 0 4px 14px var(--glow);
+    }
+    .btn:active { transform: scale(0.98); }
 
-  .output-box {
-    margin-top: 12px;
-    padding: 12px;
-    background: rgba(16, 185, 129, 0.08);
-    border: 1px solid rgba(16, 185, 129, 0.25);
-    border-radius: 8px;
-    display: none;
-    font-size: 0.84rem;
-    line-height: 1.45;
-  }
-  .output-box a.dl-link {
-    display: inline-block;
-    margin-top: 8px;
-    background: var(--success);
-    color: #fff;
-    text-decoration: none;
-    padding: 8px 14px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 0.82rem;
-  }
+    /* Output Displays */
+    .output-box {
+      margin-top: 14px;
+      padding: 14px;
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 8px;
+      display: none;
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+    .output-box a.dl-link {
+      display: inline-block;
+      margin-top: 8px;
+      background: var(--success);
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.82rem;
+    }
 
-  /* Responsive SEO Table */
-  table { width: 100%; min-width: 500px; border-collapse: collapse; }
+    /* Print Template Container */
+    @media print {
+      body * { visibility: hidden; }
+      #printableArea, #printableArea * { visibility: visible; }
+      #printableArea { position: absolute; left: 0; top: 0; width: 100%; color: #000; background: #fff; padding: 20px; }
+    }
 
-  footer { text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 35px; }
-</style>
+    footer { text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 35px; }
+  </style>
 </head>
 <body>
 
   <header>
     <div class="badge-privacy">🔒 100% PRIVATE: CLIENT-SIDE LOCAL BROWSER UTILITIES</div>
     <h1>Sarkari Photo Resizer 2026</h1>
-    <p>Complete All-In-One Exam Utility: 1-Click Official Presets, Exact KB Resizers, Multi-Image PDF Converter, Typing Engine, and Government Calculators.</p>
+    <p>Complete 10-In-1 Exam Utility Suite: Presets, Resizers, Thumb Enhancer, B&W Doc Converter, PDF Tools, Typing Test & Post Labels.</p>
   </header>
 
-  <!-- Sticky Navigation Bar -->
+  <!-- Clean Pill Navigation -->
   <nav class="nav-wrapper">
-    <button class="nav-btn active" onclick="switchTab('img-compress-sec')">🖼️ Image & Exam Presets</button>
-    <button class="nav-btn" onclick="switchTab('pdf-tools-sec')">📑 PDF Tools</button>
-    <button class="nav-btn" onclick="switchTab('text-tools-sec')">📝 Text & Templates</button>
-    <button class="nav-btn" onclick="switchTab('calc-tools-sec')">🧮 Calculators</button>
-    <button class="nav-btn" onclick="switchTab('conv-tools-sec')">📏 Converters</button>
+    <button class="nav-btn active" onclick="switchTab('img-compress-sec', this)">🖼️ Image Presets</button>
+    <button class="nav-btn" onclick="switchTab('doc-enhance-sec', this)">✨ Doc & Thumb Tools</button>
+    <button class="nav-btn" onclick="switchTab('pdf-tools-sec', this)">📑 PDF Tools</button>
+    <button class="nav-btn" onclick="switchTab('text-tools-sec', this)">📝 Text & Forms</button>
+    <button class="nav-btn" onclick="switchTab('calc-tools-sec', this)">🧮 Calculators</button>
+    <button class="nav-btn" onclick="switchTab('conv-tools-sec', this)">📏 Converters</button>
   </nav>
 
   <div class="container">
 
-    <!-- 1. IMAGE COMPRESSOR & KB SPECIFIC TOOLS -->
+    <!-- 1. IMAGE COMPRESSORS & EXAM PRESETS -->
     <div id="img-compress-sec" class="tool-group active">
       <div class="section-title">Image Compressors & Official Exam Presets</div>
       <p class="section-intro">Compress photos and signatures to exact dimensions and KB limits required by SSC, UPSC, IBPS, Railways, and Police recruitment boards.</p>
 
-      <!-- Quick Preset Pills -->
       <div class="quick-bar">
         <button class="quick-pill selected" onclick="setCompTarget(20, this)">Image 10 to 20 KB</button>
         <button class="quick-pill" onclick="setCompTarget(50, this)">Image 20 to 50 KB</button>
@@ -244,17 +240,17 @@
       </div>
 
       <div class="grid">
-        <!-- 1-Click Official Exam Preset Engine -->
+        <!-- 1-Click Preset Engine -->
         <div class="card" style="border: 2px solid var(--primary); background: rgba(99, 102, 241, 0.1);">
           <div>
             <h2>⚡ 1-Click Official Exam Preset Engine</h2>
-            <p class="desc">Select your target exam notice — dimensions, aspect ratio, and KB limits are matched automatically.</p>
+            <p class="desc">Select exam notice — dimensions, aspect ratio, and KB limits are configured automatically.</p>
             <div class="field">
               <label>Select Target Recruitment Exam</label>
               <select id="examNoticeSelect">
                 <option value="ssc_photo">SSC CGL / CHSL / MTS / GD (Photo: 20-50 KB | 3.5 x 4.5 cm)</option>
                 <option value="ssc_sign">SSC Signature (10-20 KB | 4.0 x 2.0 cm)</option>
-                <option value="upsc_photo">UPSC Civil Services / NDA / CDS (Photo: 20-300 KB | 350x350 px)</option>
+                <option value="upsc_photo">UPSC Civil Services / NDA (Photo: 20-300 KB | 350x350 px)</option>
                 <option value="rrb_photo">Railway RRB ALP / NTPC (Photo: 30-70 KB | White BG)</option>
                 <option value="police_photo">State Police Constable / SI (Photo: 20-50 KB)</option>
                 <option value="ibps_photo">IBPS Bank PO / Clerk (Photo: 20-50 KB | 200x230 px)</option>
@@ -271,11 +267,11 @@
           <div id="examNoticeOutput" class="output-box"></div>
         </div>
 
-        <!-- Universal Precision KB Compressor -->
+        <!-- Precision KB Image Compressor -->
         <div class="card">
           <div>
             <h2>🎯 Precision KB Image Compressor</h2>
-            <p class="desc">Compress photos to strict targets (10KB to 500KB) with high facial sharpness.</p>
+            <p class="desc">Compress photos to exact targets (10KB to 500KB) with high facial sharpness.</p>
             <div class="field">
               <label>Target File Size Constraint</label>
               <select id="mainCompSize">
@@ -299,7 +295,7 @@
         <div class="card">
           <div>
             <h2>🏷️ Name & Date of Photo (DOP) Stamp</h2>
-            <p class="desc">Print candidate full name and date on the passport photo footer to prevent rejection.</p>
+            <p class="desc">Print candidate full name and date on the passport photo footer to prevent form rejection.</p>
             <div class="field">
               <label>Candidate Full Name</label>
               <input type="text" id="stampFullName" placeholder="e.g. ADITYA SHARMA">
@@ -319,7 +315,58 @@
       </div>
     </div>
 
-    <!-- 2. PDF TOOLS SECTION -->
+    <!-- 2. DOC & THUMB TOOLS -->
+    <div id="doc-enhance-sec" class="tool-group">
+      <div class="section-title">✨ Thumb Impression & Document Enhancers</div>
+      <p class="section-intro">Specialized scanner tools to enhance raw phone photos of thumb impressions and convert certificates to crisp black & white for 50KB upload limits.</p>
+
+      <div class="grid">
+        <!-- Thumb Impression Enhancer -->
+        <div class="card">
+          <div>
+            <h2>🖐️ Left Thumb Impression (LTI) Enhancer</h2>
+            <p class="desc">Removes mobile camera shadows, whitens background, and sharpens ink ridges to prevent IBPS/SSC rejection.</p>
+            <div class="field">
+              <label>Upload Phone Photo of Thumb Impression</label>
+              <input type="file" id="thumbInputFile" accept="image/*">
+            </div>
+            <div class="field">
+              <label>Contrast / Sharpness Level</label>
+              <select id="thumbContrastLvl">
+                <option value="1.4">Standard High Contrast</option>
+                <option value="1.8" selected>Ultra Clear (Deep Blue/Black Lines)</option>
+                <option value="2.2">Maximum Shadow Removal</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn" onclick="enhanceThumbImpression()">Enhance & Clean Thumb Impression</button>
+          <div id="thumbOutput" class="output-box"></div>
+        </div>
+
+        <!-- Document Black & White Converter -->
+        <div class="card">
+          <div>
+            <h2>📄 Document Black & White / Grayscale Converter</h2>
+            <p class="desc">Convert colored marksheets, caste certificates, or Aadhaar cards into pure B&W for sub-50KB government uploads.</p>
+            <div class="field">
+              <label>Upload Certificate / Document Scan</label>
+              <input type="file" id="bwDocInput" accept="image/*">
+            </div>
+            <div class="field">
+              <label>Target Compression Output</label>
+              <select id="bwDocTargetKB">
+                <option value="50" selected>Compress to &lt; 50 KB (UP Police / SSC)</option>
+                <option value="100">Compress to &lt; 100 KB (High Resolution)</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn" onclick="convertToPureBW()">Convert to Black & White</button>
+          <div id="bwDocOutput" class="output-box"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. PDF TOOLS -->
     <div id="pdf-tools-sec" class="tool-group">
       <div class="section-title">PDF Utilities & Document Creators</div>
       <p class="section-intro">Convert, merge, and generate PDF documents locally in your browser.</p>
@@ -359,10 +406,10 @@
       </div>
     </div>
 
-    <!-- 3. TEXT & TEMPLATE TOOLS SECTION -->
+    <!-- 4. TEXT & FORMS -->
     <div id="text-tools-sec" class="tool-group">
-      <div class="section-title">Text Tools, Typing & Template Generators</div>
-      <p class="section-intro">Typing speed evaluations, official MP ESB templates, resume makers, and bio-data creators.</p>
+      <div class="section-title">Text Tools, Offline Labels & Application Slips</div>
+      <p class="section-intro">Typing speed engine, speed post envelope address formatters, admit card slips, and resume creators.</p>
 
       <div class="grid">
         <!-- 10 Minutes Typist Test Engine -->
@@ -378,7 +425,49 @@
           </div>
         </div>
 
-        <!-- MP ESB Vyapam Template Generator -->
+        <!-- Offline Post Envelope Address Formatter -->
+        <div class="card">
+          <div>
+            <h2>✉️ Offline Form / Post Office Envelope Formatter</h2>
+            <p class="desc">Generates standard 4x9 inch printable Speed Post / Registered Post sender & receiver address slips for Army/Court offline forms.</p>
+            <div class="field">
+              <label>Application For The Post Of</label>
+              <input type="text" id="envPostName" placeholder="e.g. Application For The Post Of MTS & Category OBC">
+            </div>
+            <div class="field">
+              <label>To (Recruiting Authority Address)</label>
+              <textarea id="envToAddress" rows="2" placeholder="To, The Commanding Officer, HQ Western Command..."></textarea>
+            </div>
+            <div class="field">
+              <label>From (Candidate Full Address & Mobile)</label>
+              <textarea id="envFromAddress" rows="2" placeholder="From: Aditya Sharma, S/O Ramesh, Vill-..., Pin: 110001, Mob: 9876543210"></textarea>
+            </div>
+          </div>
+          <button class="btn" onclick="printEnvelopeLabel()">Print Standard Envelope Label</button>
+        </div>
+
+        <!-- Application Slip & Roll No Finder Generator -->
+        <div class="card">
+          <div>
+            <h2>🖨️ Application Slip & Reg. Record Generator</h2>
+            <p class="desc">Generate a clean printable proof slip with application number, roll number, and exam credentials so details are never lost.</p>
+            <div class="field">
+              <label>Exam Name & Registration Number</label>
+              <input type="text" id="slipExamReg" placeholder="e.g. SSC CGL 2026 | Reg No: 30098472910">
+            </div>
+            <div class="field">
+              <label>Candidate Name & Father's Name</label>
+              <input type="text" id="slipCandFather" placeholder="Name: Rahul Kumar | Father: Shri Om Prakash">
+            </div>
+            <div class="field">
+              <label>Exam Post & Category</label>
+              <input type="text" id="slipPostCat" placeholder="e.g. Inspector (Examiner) | Category: OBC">
+            </div>
+          </div>
+          <button class="btn" onclick="printAppSlipRecord()">Print Application Record Slip</button>
+        </div>
+
+        <!-- MP ESB Vyapam Template -->
         <div class="card">
           <div>
             <h2>📋 MP ESB Template Generator (Vyapam)</h2>
@@ -444,13 +533,38 @@
       </div>
     </div>
 
-    <!-- 4. CALCULATORS SECTION -->
+    <!-- 5. CALCULATORS & ELIGIBILITY -->
     <div id="calc-tools-sec" class="tool-group">
       <div class="section-title">Calculators & Eligibility Helpers</div>
-      <p class="section-intro">Age calculations, date intervals, GPA/Percentage, financial and health fitness calculators.</p>
+      <p class="section-intro">Age relaxation matrix, fee calculators, GPA/Percentage, financial and health fitness tools.</p>
 
       <div class="grid">
-        <!-- Age Calculator -->
+        <!-- Category-Wise Age Relaxation & Fee Checker -->
+        <div class="card" style="border: 2px solid var(--accent); background: rgba(236, 72, 153, 0.08);">
+          <div>
+            <h2>⚖️ Category-Wise Age Relaxation & Fee Checker</h2>
+            <p class="desc">Instantly checks age relaxation norms and application fee exemptions across SSC, Railway, and State exams.</p>
+            <div class="field">
+              <label>Select Category</label>
+              <select id="relCatSelect">
+                <option value="UR">UR / General (EWS)</option>
+                <option value="OBC">OBC (Non-Creamy Layer)</option>
+                <option value="SCST">SC / ST</option>
+                <option value="PWD">PwD / Handicapped</option>
+                <option value="ESM">Ex-Servicemen (ESM)</option>
+                <option value="FEMALE">Female Candidate (All Categories)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Exam Maximum General Age Limit</label>
+              <input type="number" id="relExamMaxAge" value="27" placeholder="e.g. 27 or 30">
+            </div>
+          </div>
+          <button class="btn" style="background: linear-gradient(135deg, #ec4899, #db2777);" onclick="checkAgeRelaxation()">Check Relaxed Age Limit & Fee</button>
+          <div id="relaxationOutput" class="output-box"></div>
+        </div>
+
+        <!-- Cut-Off Date Age Calculator -->
         <div class="card">
           <div>
             <h2>🎂 Cut-Off Date Age Calculator</h2>
@@ -578,7 +692,7 @@
       </div>
     </div>
 
-    <!-- 5. UNIT CONVERTERS SECTION -->
+    <!-- 6. UNIT CONVERTERS -->
     <div id="conv-tools-sec" class="tool-group">
       <div class="section-title">Unit Converters (Physical & Medical)</div>
       <p class="section-intro">Convert height, length, and weight parameters for physical fitness test eligibility.</p>
@@ -614,73 +728,73 @@
       </div>
     </div>
 
-    <!-- Hidden Dynamic Print Container -->
+    <!-- Hidden Printable Area -->
     <div id="printableArea" style="display:none;"></div>
 
-    <!-- ADVANCED SEO, EXAM SPECIFICATIONS & FAQ SECTION -->
-    <section style="max-width: 1100px; margin: 50px auto 0 auto; padding: 28px; background: rgba(17, 24, 39, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; color: #cbd5e1; line-height: 1.7; backdrop-filter: blur(10px);">
+    <!-- SEO & FAQ SECTION -->
+    <section style="max-width: 1050px; margin: 50px auto 0 auto; padding: 25px; background: rgba(17, 24, 39, 0.85); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; color: #cbd5e1; line-height: 1.7; backdrop-filter: blur(10px);">
       
-      <h2 style="color: #a5b4fc; font-size: 1.4rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; margin-bottom: 15px;">
+      <h2 style="color: #a5b4fc; font-size: 1.35rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 8px; margin-bottom: 14px;">
         📋 How to Resize Photo & Documents for Sarkari Applications
       </h2>
       <ol style="padding-left: 20px; margin-bottom: 25px;">
-        <li style="margin-bottom: 8px;"><strong>Upload Image:</strong> Select your passport photo, signature, or certificate from your mobile or PC.</li>
-        <li style="margin-bottom: 8px;"><strong>Choose Exam Preset / File Size:</strong> Pick official targets such as SSC (20KB - 50KB), UPSC (350x350 px), or IBPS.</li>
-        <li style="margin-bottom: 8px;"><strong>Instant Download:</strong> Click download to get 100% compliant, distortion-free files ready for upload.</li>
+        <li style="margin-bottom: 6px;"><strong>Upload Image / Document:</strong> Select passport photo, thumb impression, or certificate.</li>
+        <li style="margin-bottom: 6px;"><strong>Choose Exam Preset / Target KB:</strong> Pick official targets like SSC (20KB - 50KB), UPSC (350x350 px), or B&W converter.</li>
+        <li style="margin-bottom: 6px;"><strong>Instant Download:</strong> Click download to get verified, distortion-free files ready for upload.</li>
       </ol>
 
-      <h2 style="color: #a5b4fc; font-size: 1.4rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; margin-bottom: 15px;">
+      <h2 style="color: #a5b4fc; font-size: 1.35rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 8px; margin-bottom: 14px;">
         📊 Standard Photo & Signature Sizes for Govt Exams (2026 Matrix)
       </h2>
-      <div style="overflow-x: auto; margin-bottom: 30px;">
+      <div style="overflow-x: auto; margin-bottom: 25px;">
         <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
           <thead>
             <tr style="background: rgba(99, 102, 241, 0.2); color: #fff;">
-              <th style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">Recruitment Body</th>
-              <th style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">Passport Photo Requirements</th>
-              <th style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">Signature Requirements</th>
+              <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Recruitment Body</th>
+              <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Photo Size & Dimension</th>
+              <th style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">Signature / LTI Spec</th>
             </tr>
           </thead>
           <tbody>
-            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1); font-weight: 600; color: #fff;">SSC (CGL, CHSL, MTS, GD)</td>
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">20 KB to 50 KB (3.5 cm x 4.5 cm)</td>
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">10 KB to 20 KB (4.0 cm x 2.0 cm)</td>
-            </tr>
-            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); background: rgba(255,255,255,0.02);">
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1); font-weight: 600; color: #fff;">UPSC Civil Services / NDA</td>
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">20 KB to 300 KB (Min 350x350 px)</td>
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">20 KB to 300 KB (Min 350x350 px)</td>
-            </tr>
-            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1); font-weight: 600; color: #fff;">IBPS & SBI Banking</td>
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">20 KB to 50 KB (200 x 230 px)</td>
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">10 KB to 20 KB (140 x 60 px)</td>
+            <tr>
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); font-weight: 600; color: #fff;">SSC (CGL, CHSL, MTS, GD)</td>
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">20 KB to 50 KB (3.5 x 4.5 cm)</td>
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">10 KB to 20 KB (4.0 x 2.0 cm)</td>
             </tr>
             <tr style="background: rgba(255,255,255,0.02);">
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1); font-weight: 600; color: #fff;">Railway RRB & State Police</td>
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">20 KB to 70 KB (Plain White BG)</td>
-              <td style="padding: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">10 KB to 30 KB (Black Ink)</td>
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); font-weight: 600; color: #fff;">UPSC Civil Services / NDA</td>
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">20 KB to 300 KB (Min 350x350 px)</td>
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">20 KB to 300 KB</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); font-weight: 600; color: #fff;">IBPS / SBI Banking</td>
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">20 KB to 50 KB (200 x 230 px)</td>
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">10 KB to 20 KB | LTI: 20-50 KB</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.02);">
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1); font-weight: 600; color: #fff;">Railway (RRB) / Police</td>
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">20 KB to 70 KB (Plain White BG)</td>
+              <td style="padding: 10px; border: 1px solid rgba(255,255,255,0.1);">10 KB to 30 KB</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <h2 style="color: #a5b4fc; font-size: 1.4rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 10px; margin-bottom: 15px;">
+      <h2 style="color: #a5b4fc; font-size: 1.35rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 8px; margin-bottom: 14px;">
         ❓ Frequently Asked Questions (FAQ)
       </h2>
-      <div style="display: flex; flex-direction: column; gap: 14px;">
-        <div style="background: rgba(255, 255, 255, 0.03); padding: 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
           <p style="font-weight: 700; color: #fff; margin-bottom: 4px;">Q1: Is this tool free and secure for confidential ID proofs?</p>
-          <p style="font-size: 0.88rem; color: #94a3b8;">Yes, 100%. All processing runs locally inside your browser using JavaScript and HTML5 Canvas. No photos or documents are ever uploaded to any server or database.</p>
+          <p style="font-size: 0.88rem; color: #94a3b8;">Yes, 100%. All processing runs locally inside your browser using HTML5 Canvas. No photos or documents are ever uploaded to any external server.</p>
         </div>
-        <div style="background: rgba(255, 255, 255, 0.03); padding: 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-          <p style="font-weight: 700; color: #fff; margin-bottom: 4px;">Q2: How to reduce photo size to 50KB for SSC online applications?</p>
+        <div style="background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+          <p style="font-weight: 700; color: #fff; margin-bottom: 4px;">Q2: How to reduce photo size to 50KB for SSC online application?</p>
           <p style="font-size: 0.88rem; color: #94a3b8;">Upload your photo, set the target size to '20 to 50 KB' or select the 'SSC Exam' option in the 1-Click engine, and click download.</p>
         </div>
-        <div style="background: rgba(255, 255, 255, 0.03); padding: 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-          <p style="font-weight: 700; color: #fff; margin-bottom: 4px;">Q3: Why does SSC reject candidate photos with old dates?</p>
-          <p style="font-size: 0.88rem; color: #94a3b8;">Official guidelines require photographs taken within 3 months of application release. Use our 'Name & Date Stamp' tool to add verified DOP (Date of Photo) in seconds.</p>
+        <div style="background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
+          <p style="font-weight: 700; color: #fff; margin-bottom: 4px;">Q3: Why do banking & SSC portals reject mobile thumb impressions?</p>
+          <p style="font-size: 0.88rem; color: #94a3b8;">Mobile photos often capture shadows and low ink contrast. Our Thumb Impression Enhancer automatically removes gray shadows and turns the background pure white.</p>
         </div>
       </div>
 
@@ -692,29 +806,29 @@
     <p>&copy; 2026 Sarkari Photo Resizer. All Utilities 100% Free for Aspirants Across India.</p>
   </footer>
 
-  <!-- SCRIPT ENGINE -->
+  <!-- JAVASCRIPT ENGINE -->
   <script>
     // Tab Navigation
-    function switchTab(secId) {
+    function switchTab(secId, btn) {
       document.querySelectorAll('.tool-group').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
       document.getElementById(secId).classList.add('active');
-      event.target.classList.add('active');
+      if (btn) btn.classList.add('active');
     }
 
-    // Default Date Settings
+    // Default Dates
     const todayStr = new Date().toISOString().split('T')[0];
     if(document.getElementById('ageCalcTarget')) document.getElementById('ageCalcTarget').value = todayStr;
     if(document.getElementById('dateEnd')) document.getElementById('dateEnd').value = todayStr;
 
-    // Quick Target Pill Handler
+    // Target Pills
     function setCompTarget(kb, btn) {
       document.querySelectorAll('.quick-pill').forEach(p => p.classList.remove('selected'));
       btn.classList.add('selected');
       document.getElementById('mainCompSize').value = kb;
     }
 
-    // 0. Official Exam Preset Engine
+    // 1. Official Exam Presets
     const EXAM_DATA = {
       ssc_photo: { maxKB: 50, minKB: 20, w: 350, h: 450, name: "SSC_Photo" },
       ssc_sign: { maxKB: 20, minKB: 10, w: 400, h: 200, name: "SSC_Signature" },
@@ -769,7 +883,7 @@
       reader.readAsDataURL(file);
     }
 
-    // 1. Universal Image Compressor
+    // 2. Precision KB Compressor
     function executeImageCompression() {
       const file = document.getElementById('mainCompInput').files[0];
       const targetKB = parseInt(document.getElementById('mainCompSize').value);
@@ -805,17 +919,14 @@
       reader.readAsDataURL(file);
     }
 
-    // 2. Name & Date of Photo Stamp
+    // 3. Name & Date Stamp
     function executeDateStamp() {
       const name = document.getElementById('stampFullName').value.trim().toUpperCase();
       const dateVal = document.getElementById('stampDateInput').value;
       const file = document.getElementById('stampImgInput').files[0];
       const out = document.getElementById('stampResOutput');
 
-      if (!file || !name || !dateVal) {
-        alert('Please fill Name, Date of Photo, and select a photo.');
-        return;
-      }
+      if (!file || !name || !dateVal) { alert('Please fill Name, Date of Photo, and select a photo.'); return; }
 
       const reader = new FileReader();
       reader.onload = function(e) {
@@ -847,7 +958,170 @@
       reader.readAsDataURL(file);
     }
 
-    // 3. Multi-Image to PDF
+    // 4. Thumb Impression Enhancer Engine
+    function enhanceThumbImpression() {
+      const file = document.getElementById('thumbInputFile').files[0];
+      const contrast = parseFloat(document.getElementById('thumbContrastLvl').value);
+      const out = document.getElementById('thumbOutput');
+
+      if (!file) { alert('Please upload a thumb impression image.'); return; }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+
+          const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const d = imgData.data;
+
+          for (let i = 0; i < d.length; i += 4) {
+            let gray = 0.299 * d[i] + 0.587 * d[i+1] + 0.114 * d[i+2];
+            gray = ((gray - 128) * contrast) + 128;
+            if (gray > 165) gray = 255; 
+            else if (gray < 85) gray = 0; 
+            d[i] = gray; d[i+1] = gray; d[i+2] = gray;
+          }
+
+          ctx.putImageData(imgData, 0, 0);
+          const finalUrl = canvas.toDataURL('image/jpeg', 0.88);
+          out.style.display = 'block';
+          out.innerHTML = `<strong>✔ Thumb Impression Enhanced:</strong> Shadows removed & background whitened!<br>
+            <a href="${finalUrl}" download="enhanced_thumb_impression.jpg" class="dl-link">⬇ Download Clean Thumb Scan</a>`;
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 5. Document Black & White Converter Engine
+    function convertToPureBW() {
+      const file = document.getElementById('bwDocInput').files[0];
+      const targetKB = parseInt(document.getElementById('bwDocTargetKB').value);
+      const out = document.getElementById('bwDocOutput');
+
+      if (!file) { alert('Please choose a document/certificate scan.'); return; }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+
+          const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const d = imgData.data;
+
+          for (let i = 0; i < d.length; i += 4) {
+            let gray = 0.299 * d[i] + 0.587 * d[i+1] + 0.114 * d[i+2];
+            d[i] = gray; d[i+1] = gray; d[i+2] = gray;
+          }
+          ctx.putImageData(imgData, 0, 0);
+
+          let quality = 0.85;
+          let dataUrl = canvas.toDataURL('image/jpeg', quality);
+          while (dataUrl.length * 0.75 > targetKB * 1024 && quality > 0.05) {
+            quality -= 0.05;
+            dataUrl = canvas.toDataURL('image/jpeg', quality);
+          }
+
+          const finalKB = Math.round((dataUrl.length * 0.75) / 1024);
+          out.style.display = 'block';
+          out.innerHTML = `<strong>✔ Pure Grayscale Doc Ready:</strong> Output Size ~${finalKB} KB (Target &lt; ${targetKB} KB)<br>
+            <a href="${dataUrl}" download="bw_document_${finalKB}kb.jpg" class="dl-link">⬇ Download B&W Document</a>`;
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // 6. Category-Wise Age Relaxation & Fee Checker
+    function checkAgeRelaxation() {
+      const cat = document.getElementById('relCatSelect').value;
+      const baseAge = parseInt(document.getElementById('relExamMaxAge').value) || 27;
+      const out = document.getElementById('relaxationOutput');
+
+      let relaxYears = 0;
+      let feeStatus = "₹100 (Full Exam Fee)";
+
+      if (cat === "OBC") { relaxYears = 3; feeStatus = "₹100 (No Exemption for Male)"; }
+      else if (cat === "SCST") { relaxYears = 5; feeStatus = "₹0 (100% Fee Exempted)"; }
+      else if (cat === "PWD") { relaxYears = 10; feeStatus = "₹0 (100% Fee Exempted)"; }
+      else if (cat === "ESM") { relaxYears = 3; feeStatus = "₹0 or ₹100 (As per Service Rules)"; }
+      else if (cat === "FEMALE") { relaxYears = 0; feeStatus = "₹0 (100% Fee Exempted in SSC/UPSC)"; }
+
+      const maxEligibleAge = baseAge + relaxYears;
+      out.style.display = 'block';
+      out.innerHTML = `
+        <strong>📋 Category Eligibility Summary:</strong><br>
+        • Category: <strong>${cat}</strong><br>
+        • Upper Age Relaxation Allowed: <span style="color:#10b981; font-weight:bold;">+${relaxYears} Years</span><br>
+        • Maximum Eligible Age For This Exam: <span style="color:#10b981; font-weight:bold;">${maxEligibleAge} Years</span><br>
+        • Estimated Application Fee: <strong>${feeStatus}</strong>
+      `;
+    }
+
+    // 7. Offline Post Envelope Label Generator
+    function printEnvelopeLabel() {
+      const postName = document.getElementById('envPostName').value.trim() || 'APPLICATION FOR THE POST OF ...';
+      const toAddr = document.getElementById('envToAddress').value.trim() || 'TO,\nTHE RECRUITMENT CELL...';
+      const fromAddr = document.getElementById('envFromAddress').value.trim() || 'FROM:\nCANDIDATE NAME...';
+
+      const pArea = document.getElementById('printableArea');
+      pArea.innerHTML = `
+        <div style="width: 800px; height: 380px; border: 3px dashed #000; padding: 25px; font-family: Arial, sans-serif; position: relative; margin: 20px auto; box-sizing: border-box;">
+          <div style="position: absolute; top: 15px; right: 20px; border: 2px solid #000; padding: 6px 12px; font-weight: bold; font-size: 13px;">SPEED POST / REG. POST</div>
+          <div style="font-weight: bold; font-size: 14px; text-decoration: underline; margin-bottom: 25px;">${postName}</div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 35px;">
+            <div style="width: 45%; font-size: 13px; line-height: 1.5; border: 1px solid #ccc; padding: 10px; background: #fafafa;">
+              <strong>FROM (प्रेषक):</strong><br>
+              ${fromAddr.replace(/\n/g, '<br>')}
+            </div>
+            <div style="width: 48%; font-size: 14px; line-height: 1.6; border: 2px solid #000; padding: 12px; font-weight: bold;">
+              <strong>TO (सेवा में):</strong><br>
+              ${toAddr.replace(/\n/g, '<br>')}
+            </div>
+          </div>
+        </div>
+      `;
+      pArea.style.display = 'block';
+      window.print();
+      pArea.style.display = 'none';
+    }
+
+    // 8. Application Slip Record Printer
+    function printAppSlipRecord() {
+      const examReg = document.getElementById('slipExamReg').value || 'Sarkari Exam 2026';
+      const candFather = document.getElementById('slipCandFather').value || 'Candidate Record';
+      const postCat = document.getElementById('slipPostCat').value || 'General Record';
+
+      const pArea = document.getElementById('printableArea');
+      pArea.innerHTML = `
+        <div style="border: 2px solid #1e3a8a; padding: 25px; font-family: Arial, sans-serif; max-width: 700px; margin: 20px auto;">
+          <h2 style="text-align:center; margin:0 0 10px 0; color:#1e3a8a;">SARKARI EXAM APPLICATION RECORD SLIP</h2>
+          <p style="text-align:center; font-size:12px; color:#555; margin-bottom:20px;">Keep this verified receipt for future Admit Card & Roll Number downloads.</p>
+          <table style="width:100%; border-collapse:collapse; font-size:14px;">
+            <tr style="border:1px solid #ddd; height:40px; background:#f8fafc;"><td style="padding:8px; font-weight:bold; width:35%;">Exam & Registration Details:</td><td style="padding:8px;">${examReg}</td></tr>
+            <tr style="border:1px solid #ddd; height:40px;"><td style="padding:8px; font-weight:bold;">Candidate & Father Name:</td><td style="padding:8px;">${candFather}</td></tr>
+            <tr style="border:1px solid #ddd; height:40px; background:#f8fafc;"><td style="padding:8px; font-weight:bold;">Applied Post & Category:</td><td style="padding:8px;">${postCat}</td></tr>
+            <tr style="border:1px solid #ddd; height:40px;"><td style="padding:8px; font-weight:bold;">Record Generated On:</td><td style="padding:8px;">${new Date().toLocaleString()}</td></tr>
+          </table>
+          <p style="margin-top:25px; font-size:11px; text-align:right; font-weight:bold;">System Verified • Sarkari Result Tools Hub 2026</p>
+        </div>
+      `;
+      pArea.style.display = 'block';
+      window.print();
+      pArea.style.display = 'none';
+    }
+
+    // 9. Multi-Image to PDF
     async function executeJpgToPdf() {
       const files = document.getElementById('jpgToPdfFiles').files;
       const out = document.getElementById('jpgPdfOutput');
@@ -872,7 +1146,7 @@
       out.innerHTML = `<strong>Success!</strong> Merged PDF downloaded automatically.`;
     }
 
-    // 4. Text to PDF
+    // 10. Text to PDF
     function executeTextToPdf() {
       const title = document.getElementById('docTitleInput').value.trim() || 'Document';
       const body = document.getElementById('docBodyInput').value.trim();
@@ -893,7 +1167,7 @@
       out.innerHTML = `<strong>Success!</strong> Text exported as PDF document.`;
     }
 
-    // 5. MP ESB Template Generator
+    // 11. MP ESB Template Generator
     function generateVyapamTemplate() {
       const photo = document.getElementById('vyapamPhoto').files[0];
       const sign = document.getElementById('vyapamSign').files[0];
@@ -947,7 +1221,7 @@
       r1.readAsDataURL(photo);
     }
 
-    // 6. Realtime Typing Speed Engine
+    // 12. Typing Test Engine
     let typTimer = null;
     function calculateRealtimeTyping() {
       if (!typTimer) typTimer = new Date();
@@ -960,7 +1234,7 @@
         `<strong>Typing Metrics:</strong> Speed: <span style="color:#10b981; font-size:1.1rem;">${wpm} WPM</span> | Words Typed: ${words} | Target Speed: 35 WPM`;
     }
 
-    // 7. Printable Resume & BioData Sheet
+    // 13. Resume & BioData Printers
     function printResumeSheet() {
       const name = document.getElementById('cvFullName').value.trim() || 'Candidate Name';
       const contact = document.getElementById('cvContactInfo').value.trim() || 'Phone / Email';
@@ -1012,7 +1286,7 @@
       pArea.style.display = 'none';
     }
 
-    // 8. Calculators Implementation
+    // 14. Calculators Engine
     function executeAgeCalc() {
       const dobVal = document.getElementById('ageCalcDob').value;
       const targetVal = document.getElementById('ageCalcTarget').value;
@@ -1114,7 +1388,7 @@
       out.innerHTML = `<strong>Estimated Monthly Consumption:</strong> ~${monthlyUnits} Units (kWh)`;
     }
 
-    // 9. Converters
+    // 15. Converters Engine
     function executeLengthConv() {
       const ft = parseFloat(document.getElementById('convFeetIn').value);
       const out = document.getElementById('lengthConvOutput');
