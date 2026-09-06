@@ -920,9 +920,7 @@
       <p><strong>Platform:</strong> Sarkari Tools Hub (Open Source Client Utilities)</p>
       <button class="modal-close-btn" onclick="closePolicyModal('contactModal')">Close</button>
     </div>
-  </div>
-
-  <!-- JAVASCRIPT ENGINE -->
+   <!-- JAVASCRIPT ENGINE -->
   <script>
     // Tab Navigation
     function switchTab(secId, btn) {
@@ -976,29 +974,57 @@
       reader.onload = function(e) {
         const img = new Image();
         img.onload = function() {
+          let targetW = conf.w;
+          let targetH = conf.h;
+          let dataUrl = "";
+          let finalBytes = 0;
+          const maxTargetBytes = conf.maxKB * 1024;
+
           const canvas = document.createElement('canvas');
-          canvas.width = conf.w;
-          canvas.height = conf.h;
           const ctx = canvas.getContext('2d');
-          
-          ctx.fillStyle = "#ffffff";
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-          ctx.drawImage(img, 0, 0, conf.w, conf.h);
 
-          let quality = 0.92;
-          let dataUrl = canvas.toDataURL('image/jpeg', quality);
+          for (let loop = 0; loop < 10; loop++) {
+            canvas.width = targetW;
+            canvas.height = targetH;
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, targetW, targetH);
+            ctx.drawImage(img, 0, 0, targetW, targetH);
 
-          while ((dataUrl.length * 0.75 > conf.maxKB * 1024) && quality > 0.05) {
-            quality -= 0.04;
-            dataUrl = canvas.toDataURL('image/jpeg', quality);
+            let low = 0.05, high = 0.92, bestUrl = "";
+            for (let i = 0; i < 6; i++) {
+              let mid = (low + high) / 2;
+              let testUrl = canvas.toDataURL('image/jpeg', mid);
+              let testBytes = Math.round(testUrl.length * 0.75);
+
+              if (testBytes <= maxTargetBytes) {
+                bestUrl = testUrl;
+                finalBytes = testBytes;
+                low = mid;
+              } else {
+                high = mid;
+              }
+            }
+
+            if (bestUrl && finalBytes <= maxTargetBytes) {
+              dataUrl = bestUrl;
+              break;
+            }
+
+            targetW = Math.round(targetW * 0.88);
+            targetH = Math.round(targetH * 0.88);
           }
 
-          const finalKB = Math.round((dataUrl.length * 0.75) / 1024);
+          if (!dataUrl) {
+            dataUrl = canvas.toDataURL('image/jpeg', 0.1);
+            finalBytes = Math.round(dataUrl.length * 0.75);
+          }
+
+          const finalKB = Math.round(finalBytes / 1024);
           out.style.display = 'block';
           out.innerHTML = `
             <span style="color: #10b981; font-weight: bold;">✔ Official Exam Preset Applied:</span><br>
-            • Standard Dimensions: <strong>${conf.w} x ${conf.h} px</strong><br>
-            • Output File Size: <strong>${finalKB} KB</strong> (Allowed: ${conf.minKB}-${conf.maxKB} KB)<br>
+            • Preset Standard: <strong>${conf.w} x ${conf.h} px</strong><br>
+            • Output File Size: <strong>${finalKB} KB</strong> (Target Allowed: &lt;= ${conf.maxKB} KB)<br>
             <a href="${dataUrl}" download="${conf.name}_ready.jpg" class="dl-link">⬇ Download Exam-Ready File</a>
           `;
         };
@@ -1007,7 +1033,7 @@
       reader.readAsDataURL(file);
     }
 
-    // 2. Precision KB Compressor
+    // 2. Precision KB Compressor (With Dynamic Downscaling & Binary Search)
     function executeImageCompression() {
       const file = document.getElementById('mainCompInput').files[0];
       const targetKB = parseInt(document.getElementById('mainCompSize').value);
@@ -1019,24 +1045,69 @@
       reader.onload = function(e) {
         const img = new Image();
         img.onload = function() {
-          const canvas = document.createElement('canvas');
-          canvas.width = img.width;
-          canvas.height = img.height;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0);
+          let width = img.width;
+          let height = img.height;
+          const targetBytes = targetKB * 1024;
 
-          let quality = 0.90;
-          let dataUrl = canvas.toDataURL('image/jpeg', quality);
-
-          while (dataUrl.length * 0.75 > targetKB * 1024 && quality > 0.05) {
-            quality -= 0.05;
-            dataUrl = canvas.toDataURL('image/jpeg', quality);
+          // Pre-scale high-resolution images according to target KB
+          let maxDim = targetKB <= 20 ? 450 : (targetKB <= 50 ? 700 : (targetKB <= 100 ? 1000 : 1600));
+          if (width > maxDim || height > maxDim) {
+            if (width > height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
           }
 
-          const finalKB = Math.round((dataUrl.length * 0.75) / 1024);
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          let finalUrl = "";
+          let finalBytes = 0;
+
+          // Adaptive scaling loop
+          for (let loop = 0; loop < 12; loop++) {
+            canvas.width = width;
+            canvas.height = height;
+            ctx.fillStyle = "#ffffff";
+            ctx.fillRect(0, 0, width, height);
+            ctx.drawImage(img, 0, 0, width, height);
+
+            let low = 0.05, high = 0.95, bestUrl = "";
+            for (let i = 0; i < 7; i++) {
+              let mid = (low + high) / 2;
+              let testUrl = canvas.toDataURL('image/jpeg', mid);
+              let testBytes = Math.round(testUrl.length * 0.75);
+
+              if (testBytes <= targetBytes) {
+                bestUrl = testUrl;
+                finalBytes = testBytes;
+                low = mid; // Try sharper quality within limit
+              } else {
+                high = mid; // Reduce quality
+              }
+            }
+
+            if (bestUrl && finalBytes <= targetBytes) {
+              finalUrl = bestUrl;
+              break;
+            }
+
+            // Reduce dimensions if target size isn't met
+            width = Math.round(width * 0.85);
+            height = Math.round(height * 0.85);
+          }
+
+          if (!finalUrl) {
+            finalUrl = canvas.toDataURL('image/jpeg', 0.1);
+            finalBytes = Math.round(finalUrl.length * 0.75);
+          }
+
+          const finalKB = Math.round(finalBytes / 1024);
           out.style.display = 'block';
-          out.innerHTML = `<strong>Result:</strong> Compressed to ~${finalKB} KB (Target: ${targetKB} KB)<br>
-            <a href="${dataUrl}" download="compressed_sarkari_${finalKB}kb.jpg" class="dl-link">Download Compressed Image</a>`;
+          out.innerHTML = `<strong>Result:</strong> Compressed to ~${finalKB} KB (Target: &lt;= ${targetKB} KB)<br>
+            <a href="${finalUrl}" download="compressed_sarkari_${finalKB}kb.jpg" class="dl-link">Download Compressed Image</a>`;
         };
         img.src = e.target.result;
       };
@@ -1134,11 +1205,21 @@
       reader.onload = function(e) {
         const img = new Image();
         img.onload = function() {
+          let width = img.width;
+          let height = img.height;
+          const targetBytes = targetKB * 1024;
+
+          if (targetKB <= 50 && (width > 900 || height > 900)) {
+            const scale = 900 / Math.max(width, height);
+            width = Math.round(width * scale);
+      0     height = Math.round(height * scale);
+          }
+
           const canvas = document.createElement('canvas');
-          canvas.width = img.width;
-          canvas.height = img.height;
+          canvas.width = width;
+          canvas.height = height;
           const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0);
+          ctx.drawImage(img, 0, 0, width, height);
 
           const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
           const d = imgData.data;
@@ -1151,14 +1232,14 @@
 
           let quality = 0.85;
           let dataUrl = canvas.toDataURL('image/jpeg', quality);
-          while (dataUrl.length * 0.75 > targetKB * 1024 && quality > 0.05) {
+          while (dataUrl.length * 0.75 > targetBytes && quality > 0.05) {
             quality -= 0.05;
             dataUrl = canvas.toDataURL('image/jpeg', quality);
           }
 
           const finalKB = Math.round((dataUrl.length * 0.75) / 1024);
           out.style.display = 'block';
-          out.innerHTML = `<strong>✔ Pure Grayscale Doc Ready:</strong> Output Size ~${finalKB} KB (Target &lt; ${targetKB} KB)<br>
+          out.innerHTML = `<strong>✔ Pure Grayscale Doc Ready:</strong> Output Size ~${finalKB} KB (Target &lt;= ${targetKB} KB)<br>
             <a href="${dataUrl}" download="bw_document_${finalKB}kb.jpg" class="dl-link">⬇ Download B&W Document</a>`;
         };
         img.src = e.target.result;
